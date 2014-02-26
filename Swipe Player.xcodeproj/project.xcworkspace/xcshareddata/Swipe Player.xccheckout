@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>044E7B3E-3DD5-4A41-A7E0-ABE9CFFBC7C8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Swipe Player</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EC56FF31-91AB-4F3E-9194-DC5DA62CA655</key>
+		<string>https://github.com/cjrieck/Swipe-Player.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Swipe Player.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EC56FF31-91AB-4F3E-9194-DC5DA62CA655</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cjrieck/Swipe-Player.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EC56FF31-91AB-4F3E-9194-DC5DA62CA655</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC56FF31-91AB-4F3E-9194-DC5DA62CA655</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swipe Player</string>
+		</dict>
+	</array>
+</dict>
+</plist>
