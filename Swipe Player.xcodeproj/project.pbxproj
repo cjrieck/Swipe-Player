@@ -21,6 +21,7 @@
 		01FA3C1918BCE0980000DF8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FA3BFB18BCE0970000DF8D /* UIKit.framework */; };
 		01FA3C2118BCE0980000DF8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01FA3C1F18BCE0980000DF8D /* InfoPlist.strings */; };
 		01FA3C2318BCE0980000DF8D /* Swipe_PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FA3C2218BCE0980000DF8D /* Swipe_PlayerTests.m */; };
+		01FA3C2E18BE1D570000DF8D /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FA3C2D18BE1D570000DF8D /* SwipeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		01FA3C1E18BCE0980000DF8D /* Swipe PlayerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Swipe PlayerTests-Info.plist"; sourceTree = "<group>"; };
 		01FA3C2018BCE0980000DF8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		01FA3C2218BCE0980000DF8D /* Swipe_PlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Swipe_PlayerTests.m; sourceTree = "<group>"; };
+		01FA3C2C18BE1D570000DF8D /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		01FA3C2D18BE1D570000DF8D /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				01FA3C0618BCE0970000DF8D /* SwipePlayerRootAppDelegate.h */,
 				01FA3C0718BCE0970000DF8D /* SwipePlayerRootAppDelegate.m */,
 				01FA3C0918BCE0970000DF8D /* Main.storyboard */,
+				01FA3C2C18BE1D570000DF8D /* SwipeView.h */,
+				01FA3C2D18BE1D570000DF8D /* SwipeView.m */,
 				01FA3C0C18BCE0970000DF8D /* SwipePlayerRootViewController.h */,
 				01FA3C0D18BCE0970000DF8D /* SwipePlayerRootViewController.m */,
 				01FA3C0F18BCE0970000DF8D /* Images.xcassets */,
@@ -251,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FA3C0E18BCE0970000DF8D /* SwipePlayerRootViewController.m in Sources */,
+				01FA3C2E18BE1D570000DF8D /* SwipeView.m in Sources */,
 				01FA3C0818BCE0970000DF8D /* SwipePlayerRootAppDelegate.m in Sources */,
 				01FA3C0418BCE0970000DF8D /* main.m in Sources */,
 			);
