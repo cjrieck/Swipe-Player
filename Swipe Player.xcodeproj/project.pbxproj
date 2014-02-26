@@ -22,6 +22,7 @@
 		01FA3C2118BCE0980000DF8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01FA3C1F18BCE0980000DF8D /* InfoPlist.strings */; };
 		01FA3C2318BCE0980000DF8D /* Swipe_PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FA3C2218BCE0980000DF8D /* Swipe_PlayerTests.m */; };
 		01FA3C2E18BE1D570000DF8D /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FA3C2D18BE1D570000DF8D /* SwipeView.m */; };
+		01FA3C3018BE2DD50000DF8D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FA3C2F18BE2DD50000DF8D /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		01FA3C2218BCE0980000DF8D /* Swipe_PlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Swipe_PlayerTests.m; sourceTree = "<group>"; };
 		01FA3C2C18BE1D570000DF8D /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		01FA3C2D18BE1D570000DF8D /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		01FA3C2F18BE2DD50000DF8D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01FA3C3018BE2DD50000DF8D /* MediaPlayer.framework in Frameworks */,
 				01FA3BFA18BCE0970000DF8D /* CoreGraphics.framework in Frameworks */,
 				01FA3BFC18BCE0970000DF8D /* UIKit.framework in Frameworks */,
 				01FA3BF818BCE0970000DF8D /* Foundation.framework in Frameworks */,
@@ -104,6 +107,7 @@
 		01FA3BF618BCE0970000DF8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01FA3C2F18BE2DD50000DF8D /* MediaPlayer.framework */,
 				01FA3BF718BCE0970000DF8D /* Foundation.framework */,
 				01FA3BF918BCE0970000DF8D /* CoreGraphics.framework */,
 				01FA3BFB18BCE0970000DF8D /* UIKit.framework */,
@@ -205,6 +209,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = CLA;
 				TargetAttributes = {
+					01FA3BF318BCE0970000DF8D = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					01FA3C1418BCE0980000DF8D = {
 						TestTargetID = 01FA3BF318BCE0970000DF8D;
 					};
