@@ -400,6 +400,8 @@
 				GCC_PREFIX_HEADER = "Swipe Player/Swipe Player-Prefix.pch";
 				INFOPLIST_FILE = "Swipe Player/Swipe Player-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -413,6 +415,8 @@
 				GCC_PREFIX_HEADER = "Swipe Player/Swipe Player-Prefix.pch";
 				INFOPLIST_FILE = "Swipe Player/Swipe Player-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

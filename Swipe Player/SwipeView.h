@@ -13,20 +13,26 @@
 {
     CGPoint start;
     CGPoint end;
-    
     CGFloat screenHeight;
+    NSArray* musicCollections;
+    
+    int currentSongIndex;
 }
 
-@property(nonatomic, strong)MPMusicPlayerController* musicManager;
+@property(nonatomic, strong) MPMusicPlayerController* musicManager;
+@property(nonatomic, strong) MPMediaQuery* mediaQuery;
+@property(nonatomic, copy) MPMediaItem* currentSong;
 
 - (void)customInit;
 //- (IBAction)upSwipeDetected:(id)sender;
 //- (IBAction)downSwipeDetected:(id)sender;
 - (IBAction)leftSwipeDetected:(id)sender;
 - (IBAction)rightSwipeDetected:(id)sender;
+- (IBAction)doubleTap:(id)sender;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 //- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 
+- (void)stopAndPlayNext:(int)songIndex;
 @end
