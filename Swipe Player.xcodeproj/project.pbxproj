@@ -119,9 +119,9 @@
 		01FA3BFD18BCE0970000DF8D /* Swipe Player */ = {
 			isa = PBXGroup;
 			children = (
+				01FA3C0918BCE0970000DF8D /* Main.storyboard */,
 				01FA3C0618BCE0970000DF8D /* SwipePlayerRootAppDelegate.h */,
 				01FA3C0718BCE0970000DF8D /* SwipePlayerRootAppDelegate.m */,
-				01FA3C0918BCE0970000DF8D /* Main.storyboard */,
 				01FA3C2C18BE1D570000DF8D /* SwipeView.h */,
 				01FA3C2D18BE1D570000DF8D /* SwipeView.m */,
 				01FA3C0C18BCE0970000DF8D /* SwipePlayerRootViewController.h */,
@@ -478,6 +478,7 @@
 				01FA3C2818BCE0980000DF8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01FA3C2918BCE0980000DF8D /* Build configuration list for PBXNativeTarget "Swipe PlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +487,7 @@
 				01FA3C2B18BCE0980000DF8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

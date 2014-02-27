@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {
@@ -14,9 +15,11 @@
     CGPoint end;
     
     CGFloat screenHeight;
-    
 }
 
+@property(nonatomic, strong)MPMusicPlayerController* musicManager;
+
+- (void)customInit;
 //- (IBAction)upSwipeDetected:(id)sender;
 //- (IBAction)downSwipeDetected:(id)sender;
 - (IBAction)leftSwipeDetected:(id)sender;

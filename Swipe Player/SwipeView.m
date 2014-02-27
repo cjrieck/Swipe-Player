@@ -10,12 +10,29 @@
 
 @implementation SwipeView
 
+@synthesize musicManager;
+
+-(void)customInit {
+    // initialize stuff here
+    musicManager = [MPMusicPlayerController applicationMusicPlayer];
+    [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    screenHeight = screenRect.size.height;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        screenHeight = [[UIScreen mainScreen] bounds].size.height;
+        [self customInit];
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])){
+        [self customInit];
     }
     return self;
 }
@@ -38,9 +55,14 @@
     UITouch* touch = [touches anyObject];
     end = [touch locationInView:self];
     
-//    double volumeLevel = end.y/screenHeight;
+//    NSLog(@"%f", screenHeight);
+//    NSLog(@"---------------------------------------------------------------------------");
     
-    NSLog(@"%f", screenHeight);
+    double volumeLevel = 1.0-(end.y/screenHeight);
+    
+    
+    
+    NSLog(@"%f", volumeLevel);
     
 }
 
