@@ -44,6 +44,9 @@
     // gets the screen height
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenHeight = screenRect.size.height;
+    
+    volumeLevel = 0.0;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -73,41 +76,60 @@
 
 - (IBAction)rightSwipeDetected:(id)sender {
     
-    currentSongIndex++;
+    currentSongIndex--;
     
     [self stopAndPlayNext:currentSongIndex];
-    
-    NSLog(@"SWIPE RIGHT");
+
 }
 
 - (IBAction)doubleTap:(id)sender {
-    [self stopAndPlayNext:currentSongIndex];
-    NSLog(@"DOUBLE TAP");
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch* touch = [touches anyObject];
-    start = [touch locationInView:self];
+    
+    if ([musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+        NSLog(@"DOUBLE TAP STOPPING");
+        [musicManager stop];
+    }
+    
+    else {
+        NSLog(@"DOUBLE TAP PLAYING");
+        [musicManager play];
+    }
     
 }
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    UITouch* touch = [touches anyObject];
+//    start = [touch locationInView:self];
+//    
+//}
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
     end = [touch locationInView:self];
     
-    double volumeLevel = 1.0-(end.y/screenHeight);
+    double currentVolumeLevel = volumeLevel;
     
-    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+    volumeLevel = 1.0-(end.y/screenHeight);
     
-    
-    NSLog(@"%f", volumeLevel);
-    
+    if ((volumeLevel - currentVolumeLevel) > 0.009 || (volumeLevel - currentVolumeLevel) < 0.009) {
+        [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+    }
 }
 
 - (void)stopAndPlayNext:(int)songIndex {
+    
+    if (songIndex < 0) {
+        songIndex = 0;
+    }
+    else if (songIndex > [musicCollections count]) {
+        songIndex = [musicCollections count] - 1;
+    }
+    
     [musicManager stop];
     [musicManager setNowPlayingItem:musicCollections[songIndex]];
     [musicManager play];
+    currentSong = musicCollections[songIndex];
 }
+
+
 
 @end

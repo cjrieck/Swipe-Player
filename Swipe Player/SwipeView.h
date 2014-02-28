@@ -16,7 +16,9 @@
     CGFloat screenHeight;
     NSArray* musicCollections;
     
+    
     int currentSongIndex;
+    double volumeLevel;
 }
 
 @property(nonatomic, strong) MPMusicPlayerController* musicManager;
@@ -30,7 +32,7 @@
 - (IBAction)rightSwipeDetected:(id)sender;
 - (IBAction)doubleTap:(id)sender;
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 //- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 
