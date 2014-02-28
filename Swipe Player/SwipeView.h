@@ -14,7 +14,8 @@
 //    IBOutlet UIImageView* cover;
     
     CGPoint start;
-    CGPoint end;
+    CGPoint end1;
+    CGPoint end2;
     CGFloat screenHeight;
     NSArray* musicCollections;
     

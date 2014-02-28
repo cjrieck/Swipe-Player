@@ -46,7 +46,8 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenHeight = screenRect.size.height;
     
-    volumeLevel = 0.0;
+    volumeLevel = 0.5;
+    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
     
     [self setCoverArt:currentSongIndex];
     
@@ -73,6 +74,10 @@
     
     currentSongIndex++;
     
+    if (currentSongIndex == [musicCollections count]) {
+        currentSongIndex = [musicCollections count]-1;
+    }
+    
     [self setCoverArt:currentSongIndex];
     [self stopAndPlayNext:currentSongIndex];
     
@@ -81,6 +86,10 @@
 - (IBAction)rightSwipeDetected:(id)sender {
     
     currentSongIndex--;
+    
+    if (currentSongIndex < 0) {
+        currentSongIndex = 0;
+    }
     
     [self setCoverArt:currentSongIndex];
     [self stopAndPlayNext:currentSongIndex];
@@ -109,25 +118,29 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
-    end = [touch locationInView:self];
+    end1 = [touch locationInView:self];
     
-    double currentVolumeLevel = volumeLevel;
-    
-    volumeLevel = 1.0-(end.y/screenHeight);
-    
-    if ((volumeLevel - currentVolumeLevel) > 0.009 || (volumeLevel - currentVolumeLevel) < 0.009) {
-        [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+    if (end2.y==0.0) {
+        end2 = end1;
     }
+    
+    if ((end1.y-end2.y) > 0) { // moving up
+        volumeLevel = volumeLevel - 0.001;
+    }
+    
+    else {
+        volumeLevel = volumeLevel + 0.001;
+    }
+    
+    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+    
+    NSLog(@"Volume level: %f", volumeLevel);
+    
+    end2 = end1;
+    
 }
 
 - (void)stopAndPlayNext:(int)songIndex {
-    
-    if (songIndex < 0) {
-        songIndex = 0;
-    }
-    else if (songIndex > [musicCollections count]) {
-        songIndex = [musicCollections count] - 1;
-    }
     
     [musicManager stop];
     [musicManager setNowPlayingItem:musicCollections[songIndex]];
@@ -136,6 +149,7 @@
 }
 
 - (void)setCoverArt:(int)songIndex {
+    
     MPMediaItemArtwork* albumCover = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyArtwork];
     UIImage* art = [albumCover imageWithSize:cover.bounds.size];
     
