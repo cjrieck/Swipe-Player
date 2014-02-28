@@ -11,6 +11,8 @@
 
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {
+//    IBOutlet UIImageView* cover;
+    
     CGPoint start;
     CGPoint end;
     CGFloat screenHeight;
@@ -24,6 +26,7 @@
 @property(nonatomic, strong) MPMusicPlayerController* musicManager;
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
+@property(nonatomic, retain) IBOutlet UIImageView* cover;
 
 - (void)customInit;
 //- (IBAction)upSwipeDetected:(id)sender;
@@ -37,4 +40,5 @@
 //- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 
 - (void)stopAndPlayNext:(int)songIndex;
+- (void)setCoverArt:(int)songIndex;
 @end

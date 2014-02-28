@@ -13,6 +13,7 @@
 @synthesize musicManager;
 @synthesize mediaQuery;
 @synthesize currentSong;
+@synthesize cover;
 
 -(void)customInit {
     // set up the music manager
@@ -47,6 +48,8 @@
     
     volumeLevel = 0.0;
     
+    [self setCoverArt:currentSongIndex];
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -70,6 +73,7 @@
     
     currentSongIndex++;
     
+    [self setCoverArt:currentSongIndex];
     [self stopAndPlayNext:currentSongIndex];
     
 }
@@ -78,6 +82,7 @@
     
     currentSongIndex--;
     
+    [self setCoverArt:currentSongIndex];
     [self stopAndPlayNext:currentSongIndex];
 
 }
@@ -130,6 +135,18 @@
     currentSong = musicCollections[songIndex];
 }
 
-
+- (void)setCoverArt:(int)songIndex {
+    MPMediaItemArtwork* albumCover = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyArtwork];
+    UIImage* art = [albumCover imageWithSize:cover.bounds.size];
+    
+    if (art) {
+        cover.image = art;
+    }
+    
+    else {
+        // replace with filler art
+        NSLog(@"No art");
+    }
+}
 
 @end
