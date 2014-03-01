@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {

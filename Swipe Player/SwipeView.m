@@ -46,7 +46,47 @@
     
     [musicManager setNowPlayingItem:musicCollections[currentSongIndex]];
     [self setCoverArtAndInfo:currentSongIndex];
+    
+//    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
+//    NSError* setCategoryError = nil;
+//    
+//    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+//    if (setCategoryError) {
+//        NSLog(@"FAIL 1");
+//    }
+//    
+//    NSError* activationError = nil;
+//    [audioSession setActive:YES error:&activationError];
+//    if (activationError) {
+//        NSLog(@"FAIL 2");
+//    }
 
+
+//    NSError *setCategoryErr = nil;
+//    NSError *activationErr  = nil;
+//    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
+//    [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
+//    
+//    if (setCategoryErr) {
+//        NSLog(@"%@", [setCategoryErr userInfo]);
+//    }
+//    
+//    if (activationErr) {
+//        NSLog(@"%@", [activationErr userInfo]);
+//    }
+
+    [[AVAudioSession sharedInstance] setDelegate: self];
+	
+	
+	// Use this code instead to allow the app sound to continue to play when the screen is locked.
+//	[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+	
+	NSError *myErr;
+    
+    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&myErr]) {
+        NSLog(@"Audio Session error %@, %@", myErr, [myErr userInfo]);
+    }
+	
 }
 
 - (id)initWithFrame:(CGRect)frame
