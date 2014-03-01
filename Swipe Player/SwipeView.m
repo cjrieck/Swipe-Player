@@ -126,7 +126,7 @@
     return YES;
 }
 
-- (void)stopAndPlayNext:(int)songIndex {
+- (void)stopAndPlayNext:(long)songIndex {
     
     [musicManager stop];
     [musicManager setNowPlayingItem:musicCollections[songIndex]];
@@ -134,7 +134,7 @@
     currentSong = musicCollections[songIndex];
 }
 
-- (void)setCoverArtAndInfo:(int)songIndex {
+- (void)setCoverArtAndInfo:(long)songIndex {
     
     MPMediaItemArtwork* albumCover = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyArtwork];
     NSString* title = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyTitle];

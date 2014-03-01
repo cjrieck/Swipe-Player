@@ -14,7 +14,7 @@
     CGFloat screenHeight;
     NSArray* musicCollections;
     
-    int currentSongIndex;
+    long currentSongIndex;
     double volumeLevel;
     double volumeSensitivity;
 }
@@ -41,6 +41,6 @@
 - (IBAction)doubleTap:(id)sender;
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGesture;
 
-- (void)stopAndPlayNext:(int)songIndex;
-- (void)setCoverArtAndInfo:(int)songIndex;
+- (void)stopAndPlayNext:(long)songIndex;
+- (void)setCoverArtAndInfo:(long)songIndex;
 @end

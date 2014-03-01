@@ -77,7 +77,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="LSz-3w-Hhd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="tMr-Ev-ez7"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="tMr-Ev-ez7"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
