@@ -26,6 +26,7 @@
     
     // creates music queue
     [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
+//    [musicManager setShuffleMode:];
     
     // get collections of songs
     MPMediaQuery* everything = [[MPMediaQuery alloc]init];
@@ -42,10 +43,37 @@
     [self addSubview:volumeView];
     
     volumeLevel = 0.5;
-    volumeSensitivity = 0.01;
+    volumeSensitivity = 0.007;
     
     [musicManager setNowPlayingItem:musicCollections[currentSongIndex]];
-    [self setCoverArtAndInfo:currentSongIndex];
+//    [self setCoverArtAndInfo:currentSongIndex];
+    
+    
+    
+    MPMediaItemArtwork* albumCover = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtwork];
+    NSString* title = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyTitle];
+    NSString* artist = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtist];
+    
+    UIImage* art = [albumCover imageWithSize:cover.bounds.size];
+    
+    if (title) {
+        songTitle.text = title;
+        
+        if (artist) {
+            songArtist.text = artist;
+            
+            if (art) {
+                cover.image = art;
+            } else {
+                // replace with filler art
+                NSLog(@"No art");
+            }
+        } else {
+            songArtist.text = @"";
+        }
+    } else {
+        songTitle.text = @"None";
+    }
     
 //    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
 //    NSError* setCategoryError = nil;

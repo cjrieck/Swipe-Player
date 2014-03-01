@@ -10,6 +10,7 @@
 //#import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "SwipeView.h"
 
 @interface SwipePlayerRootViewController : UIViewController
 
