@@ -42,12 +42,11 @@
     [self addSubview:volumeView];
     
     volumeLevel = 0.5;
-    volumeSensitivity = 0.005;
+    volumeSensitivity = 0.01;
     
+    [musicManager setNowPlayingItem:musicCollections[currentSongIndex]];
     [self setCoverArtAndInfo:currentSongIndex];
-    
-//    self.rightSwipe.delegate = self;
-    
+
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -67,7 +66,6 @@
 }
 
 - (IBAction)leftSwipeDetected:(id)sender {
-    NSLog(@"SWIPE LEFT");
     
     currentSongIndex++;
     
@@ -96,70 +94,30 @@
 - (IBAction)doubleTap:(id)sender {
     
     if ([musicManager playbackState] == MPMusicPlaybackStatePlaying) {
-        NSLog(@"DOUBLE TAP STOPPING");
         [musicManager pause];
     }
     
     else {
-        NSLog(@"DOUBLE TAP PLAYING");
         [musicManager play];
     }
     
 }
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    UITouch* touch = [touches anyObject];
-//    start = [touch locationInView:self];
-//    
-//}
-
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//    
-//    UITouch* touch = [touches anyObject];
-//    end1 = [touch locationInView:self];
-//    
-//    if (end2.y==0.0) {
-//        end2 = end1;
-//    }
-//    
-//    if ((end1.y-end2.y) > 0) { // moving down
-//        volumeLevel = volumeLevel - volumeSensitivity; // decrease volume
-//    }
-//    
-//    else {
-//        volumeLevel = volumeLevel + volumeSensitivity;
-//    }
-//    
-//    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
-//    
-//    NSLog(@"Volume level: %f", volumeLevel);
-//    
-//    end2 = end1;
-//}
-
-//- (IBAction)upDownPanDetected:(id)sender {
-//    NSLog(@"Sender");
-//}
-
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGestureSender {
+    // prevent pan gesture until both right and left swipe gestures fail
     [self.panGesture requireGestureRecognizerToFail:leftSwipe];
     [self.panGesture requireGestureRecognizerToFail:rightSwipe];
     
-//    NSLog(@"PANNING UP/DOWN");
     if (panGestureSender.state == UIGestureRecognizerStateChanged) {
-    
-//        NSLog(@"PANNING UP/DOWN");
         
         CGPoint velocity = [panGestureSender velocityInView: self];
-        if (velocity.y > 0) {
-            // panning down
+        if (velocity.y > 0) { // panning down
             volumeLevel = volumeLevel - volumeSensitivity;
         }
         else {
             volumeLevel = volumeLevel + volumeSensitivity;
         }
     }
-    
     
     [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
 }
@@ -192,27 +150,16 @@
             
             if (art) {
                 cover.image = art;
-                
-            }
-            
-            else {
+            } else {
                 // replace with filler art
                 NSLog(@"No art");
             }
-            
-        }
-        
-        else {
+        } else {
             songArtist.text = @"";
         }
-        
-    }
-    
-    else {
+    } else {
         songTitle.text = @"None";
     }
-    
-    
 }
 
 @end
