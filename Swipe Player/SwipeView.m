@@ -19,6 +19,8 @@
 @synthesize panGesture;
 @synthesize rightSwipe;
 @synthesize leftSwipe;
+//@synthesize timeUISlider;
+//@synthesize progressTimer;
 
 -(void)customInit {
     // set up the music manager
@@ -190,6 +192,29 @@
     [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
 }
 
+//- (void)handleNowPlayingItemChanged:(id)notification {
+//    
+//    NSNumber* duration = [currentSong valueForProperty:MPMediaItemPropertyPlaybackDuration];
+//    float totalTime = [duration floatValue];
+//    
+//    timeUISlider.maximumValue = totalTime;
+//    
+//    [musicManager setCurrentPlaybackTime: [timeUISlider value]];
+//}
+//
+//- (void)updateSlider {
+//    [timeUISlider setValue:musicManager.currentPlaybackTime animated:YES];
+//}
+//
+//- (void)resetTimer:(NSTimer *)timer {
+//    [progressTimer invalidate];
+//    progressTimer = nil;
+//    progressTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+//                                                   selector:@selector(updateSlider)
+//                                                   userInfo:nil repeats:YES];
+//    
+//}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
@@ -230,4 +255,7 @@
     }
 }
 
+//-(void)updateQueueWithCollection:(MPMediaQuery*)collection {
+//    musicManager.currentPlaybackTime = currentSong.
+//}
 @end

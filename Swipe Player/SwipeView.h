@@ -26,6 +26,9 @@
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
 
+//@property(nonatomic, retain) IBOutlet UISlider* timeUISlider;
+//@property (nonatomic, retain) NSTimer* progressTimer;
+
 // song information
 @property(nonatomic, retain) IBOutlet UIImageView* cover;
 @property(nonatomic, retain) IBOutlet UILabel* songTitle;
@@ -43,6 +46,13 @@
 - (IBAction)doubleTap:(id)sender;
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGesture;
 
+//- (IBAction)setTimeSlider:(UISlider *)timeSlider;
+//- (void)handleNowPlayingItemChanged:(id)notification;
+//- (void)updateSlider;
+//- (void)resetTimer:(NSTimer*)timer;
+
 - (void)stopAndPlayNext:(long)songIndex;
 - (void)setCoverArtAndInfo:(long)songIndex;
+
+//- (void)updateQueueWithCollection:(MPMediaQuery*) collection;
 @end
