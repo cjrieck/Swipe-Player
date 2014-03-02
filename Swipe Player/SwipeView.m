@@ -19,16 +19,17 @@
 @synthesize panGesture;
 @synthesize rightSwipe;
 @synthesize leftSwipe;
-//@synthesize timeUISlider;
-//@synthesize progressTimer;
+@synthesize notificationCenter;
 
 -(void)customInit {
     // set up the music manager
-    musicManager = [MPMusicPlayerController applicationMusicPlayer];
+    musicManager = [MPMusicPlayerController iPodMusicPlayer];
+//    [musicManager setShuffleMode:MPMusicShuffleModeDefault];
+//    [musicManager setRepeatMode:MPMusicRepeatModeDefault];
     
     // creates music queue
     [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
-//    [musicManager setShuffleMode:];
+    //    [musicManager setShuffleMode:];
     
     // get collections of songs
     MPMediaQuery* everything = [[MPMediaQuery alloc]init];
@@ -47,10 +48,22 @@
     volumeLevel = 0.5;
     volumeSensitivity = 0.007;
     
-    [musicManager setNowPlayingItem:musicCollections[currentSongIndex]];
-//    [self setCoverArtAndInfo:currentSongIndex];
+    [musicManager setNowPlayingItem:musicCollections[0]];
     
+    // create music notification center
+    notificationCenter = [NSNotificationCenter defaultCenter];
     
+    [notificationCenter addObserver:self
+                        selector:@selector(handleNowPlayingItemChanged:)
+                        name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                        object:musicManager];
+    
+    [notificationCenter addObserver:self
+                        selector:@selector(handleVolumeChangedFromOutsideApp:)
+                        name:MPMusicPlayerControllerVolumeDidChangeNotification
+                        object:musicManager];
+    
+//    [musicManager beginGeneratingPlaybackNotifications];
     
     MPMediaItemArtwork* albumCover = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtwork];
     NSString* title = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyTitle];
@@ -76,34 +89,6 @@
     } else {
         songTitle.text = @"None";
     }
-    
-//    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
-//    NSError* setCategoryError = nil;
-//    
-//    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
-//    if (setCategoryError) {
-//        NSLog(@"FAIL 1");
-//    }
-//    
-//    NSError* activationError = nil;
-//    [audioSession setActive:YES error:&activationError];
-//    if (activationError) {
-//        NSLog(@"FAIL 2");
-//    }
-
-
-//    NSError *setCategoryErr = nil;
-//    NSError *activationErr  = nil;
-//    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
-//    [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
-//    
-//    if (setCategoryErr) {
-//        NSLog(@"%@", [setCategoryErr userInfo]);
-//    }
-//    
-//    if (activationErr) {
-//        NSLog(@"%@", [activationErr userInfo]);
-//    }
 
     [[AVAudioSession sharedInstance] setDelegate: self];
 	
@@ -135,29 +120,48 @@
     return self;
 }
 
+//- (void)initMusicPlayer {
+//    musicManager = [MPMusicPlayerController iPodMusicPlayer];
+//    [musicManager setShuffleMode:MPMusicShuffleModeDefault];
+//    [musicManager setRepeatMode:MPMusicRepeatModeDefault];
+//    
+//    // creates music queue
+//    [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
+//    
+//    // get collections of songs
+//    MPMediaQuery* everything = [[MPMediaQuery alloc]init];
+//    
+//    musicCollections = [everything items];
+//    
+//}
+
 - (IBAction)leftSwipeDetected:(id)sender {
     
-    currentSongIndex++;
+//    currentSongIndex++;
+//    
+//    if (currentSongIndex == [musicCollections count]) {
+//        currentSongIndex = [musicCollections count]-1;
+//    }
+
+    [musicManager skipToNextItem];
+    [self setCoverArtAndInfo:currentSong];
     
-    if (currentSongIndex == [musicCollections count]) {
-        currentSongIndex = [musicCollections count]-1;
-    }
-    
-    [self setCoverArtAndInfo:currentSongIndex];
-    [self stopAndPlayNext:currentSongIndex];
+//    [self stopAndPlayNext:currentSongIndex];
     
 }
 
 - (IBAction)rightSwipeDetected:(id)sender {
     
-    currentSongIndex--;
+//    currentSongIndex--;
+//    
+//    if (currentSongIndex < 0) {
+//        currentSongIndex = 0;
+//    }
     
-    if (currentSongIndex < 0) {
-        currentSongIndex = 0;
-    }
+    [musicManager skipToPreviousItem];
+    [self setCoverArtAndInfo:currentSong];
     
-    [self setCoverArtAndInfo:currentSongIndex];
-    [self stopAndPlayNext:currentSongIndex];
+//    [self stopAndPlayNext:currentSongIndex];
 
 }
 
@@ -192,28 +196,17 @@
     [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
 }
 
-//- (void)handleNowPlayingItemChanged:(id)notification {
-//    
-//    NSNumber* duration = [currentSong valueForProperty:MPMediaItemPropertyPlaybackDuration];
-//    float totalTime = [duration floatValue];
-//    
-//    timeUISlider.maximumValue = totalTime;
-//    
-//    [musicManager setCurrentPlaybackTime: [timeUISlider value]];
-//}
-//
-//- (void)updateSlider {
-//    [timeUISlider setValue:musicManager.currentPlaybackTime animated:YES];
-//}
-//
-//- (void)resetTimer:(NSTimer *)timer {
-//    [progressTimer invalidate];
-//    progressTimer = nil;
-//    progressTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self
-//                                                   selector:@selector(updateSlider)
-//                                                   userInfo:nil repeats:YES];
-//    
-//}
+- (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
+    currentSong = [musicManager nowPlayingItem];
+    [self setCoverArtAndInfo:currentSong];
+    
+}
+
+- (void)handleVolumeChangedFromOutsideApp:(id)notification {
+    // animate volume slider once implemented
+    // [_volumeSlider setValue:self.musicPlayer.volume animated:YES];
+    NSLog(@"Volume changed");
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
@@ -227,11 +220,11 @@
     currentSong = musicCollections[songIndex];
 }
 
-- (void)setCoverArtAndInfo:(long)songIndex {
+- (void)setCoverArtAndInfo:(MPMediaItem*)current {
     
-    MPMediaItemArtwork* albumCover = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyArtwork];
-    NSString* title = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyTitle];
-    NSString* artist = [musicCollections[songIndex] valueForProperty:MPMediaItemPropertyArtist];
+    MPMediaItemArtwork* albumCover = [current valueForProperty:MPMediaItemPropertyArtwork];
+    NSString* title = [current valueForProperty:MPMediaItemPropertyTitle];
+    NSString* artist = [current valueForProperty:MPMediaItemPropertyArtist];
     
     UIImage* art = [albumCover imageWithSize:cover.bounds.size];
     
@@ -255,7 +248,5 @@
     }
 }
 
-//-(void)updateQueueWithCollection:(MPMediaQuery*)collection {
-//    musicManager.currentPlaybackTime = currentSong.
-//}
+
 @end

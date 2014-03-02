@@ -25,9 +25,7 @@
 @property(nonatomic, strong) MPMusicPlayerController* musicManager;
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
-
-//@property(nonatomic, retain) IBOutlet UISlider* timeUISlider;
-//@property (nonatomic, retain) NSTimer* progressTimer;
+@property(nonatomic, strong) NSNotificationCenter* notificationCenter;
 
 // song information
 @property(nonatomic, retain) IBOutlet UIImageView* cover;
@@ -40,19 +38,16 @@
 @property(nonatomic, strong) IBOutlet UISwipeGestureRecognizer* rightSwipe;
 
 - (void)customInit;
+//- (void)initMusicPlayer;
 
 - (IBAction)leftSwipeDetected:(id)sender;
 - (IBAction)rightSwipeDetected:(id)sender;
 - (IBAction)doubleTap:(id)sender;
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGesture;
 
-//- (IBAction)setTimeSlider:(UISlider *)timeSlider;
-//- (void)handleNowPlayingItemChanged:(id)notification;
-//- (void)updateSlider;
-//- (void)resetTimer:(NSTimer*)timer;
+- (void)handleNowPlayingItemChanged:(id)notification;
+- (void)handleVolumeChangedFromOutsideApp:(id)notification;
 
 - (void)stopAndPlayNext:(long)songIndex;
-- (void)setCoverArtAndInfo:(long)songIndex;
-
-//- (void)updateQueueWithCollection:(MPMediaQuery*) collection;
+- (void)setCoverArtAndInfo:(MPMediaItem*)current;
 @end

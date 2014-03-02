@@ -76,9 +76,7 @@
                             <outletCollection property="gestureRecognizers" destination="0rh-VB-Jel" appends="YES" id="Xkh-Pv-hca"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="LSz-3w-Hhd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="tMr-Ev-ez7"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="LSz-3w-Hhd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="Q6J-6Y-VO7">
