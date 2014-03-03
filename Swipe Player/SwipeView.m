@@ -64,26 +64,7 @@
                         name:MPMusicPlayerControllerVolumeDidChangeNotification
                         object:musicManager];
     
-    
-    // call on main thread
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [musicManager beginGeneratingPlaybackNotifications];
-//    });
-//    [musicManager beginGeneratingPlaybackNotifications];
-    
     [self setCoverArtAndInfo:musicManager.nowPlayingItem];
-
-//    [[AVAudioSession sharedInstance] setDelegate: self];
-	
-	
-	// Use this code instead to allow the app sound to continue to play when the screen is locked.
-//	[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
-	
-//	NSError *myErr;
-//    
-//    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&myErr]) {
-//        NSLog(@"Audio Session error %@, %@", myErr, [myErr userInfo]);
-//    }
 	
 }
 
@@ -113,8 +94,6 @@
 }
 
 - (IBAction)leftSwipeDetected:(id)sender {
-
-//    [self.leftSwipe requireGestureRecognizerToFail:panGesture];
     
     [musicManager skipToNextItem];
     currentSong = [musicManager nowPlayingItem];
@@ -123,8 +102,6 @@
 }
 
 - (IBAction)rightSwipeDetected:(id)sender {
-    
-//    [self.rightSwipe requireGestureRecognizerToFail:panGesture];
     
     [musicManager skipToPreviousItem];
     currentSong = [musicManager nowPlayingItem];
