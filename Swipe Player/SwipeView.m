@@ -21,7 +21,6 @@
 @synthesize rightSwipe;
 @synthesize leftSwipe;
 @synthesize longPress;
-//@synthesize notificationCenter;
 
 -(void)customInit {
     // set up the music manager
@@ -115,6 +114,8 @@
 
 - (IBAction)leftSwipeDetected:(id)sender {
 
+//    [self.leftSwipe requireGestureRecognizerToFail:panGesture];
+    
     [musicManager skipToNextItem];
     currentSong = [musicManager nowPlayingItem];
     [self setCoverArtAndInfo:currentSong];
@@ -122,6 +123,8 @@
 }
 
 - (IBAction)rightSwipeDetected:(id)sender {
+    
+//    [self.rightSwipe requireGestureRecognizerToFail:panGesture];
     
     [musicManager skipToPreviousItem];
     currentSong = [musicManager nowPlayingItem];

@@ -12,7 +12,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="MIB-fb-kxH"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="b9V-ub-1xg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8TL-oR-7Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,13 +66,13 @@
                                     <outlet property="cover" destination="Jnh-Tk-9jg" id="a1N-xn-uRV"/>
                                     <outlet property="doubleTapGesture" destination="Mb7-Z3-O5K" id="UeD-nO-vsW"/>
                                     <outlet property="leftSwipe" destination="dS8-nt-1mI" id="wBl-rO-7vc"/>
-                                    <outlet property="longPress" destination="Rjx-09-9u6" id="ImZ-c7-StD"/>
+                                    <outlet property="longPress" destination="Rjx-09-9u6" id="g1C-Fc-uPq"/>
                                     <outlet property="panGesture" destination="0rh-VB-Jel" id="lJ7-v6-6ca"/>
                                     <outlet property="rightSwipe" destination="Q6J-6Y-VO7" id="Dhn-Du-plt"/>
                                     <outlet property="songArtist" destination="tgy-Kk-hev" id="IHD-zG-7vj"/>
                                     <outlet property="songTitle" destination="y3Z-Mi-SBg" id="xkh-fG-ked"/>
                                     <outletCollection property="gestureRecognizers" destination="Mb7-Z3-O5K" appends="YES" id="eeV-lK-bc1"/>
-                                    <outletCollection property="gestureRecognizers" destination="Rjx-09-9u6" appends="YES" id="HgJ-dd-iSv"/>
+                                    <outletCollection property="gestureRecognizers" destination="Rjx-09-9u6" appends="YES" id="hpo-OQ-WUB"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -113,7 +113,7 @@
                 </panGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="0.0" minimumPressDuration="1.5000000000000002" id="Rjx-09-9u6">
                     <connections>
-                        <action selector="longPressDown:" destination="nVP-mS-8Th" id="RAb-XK-jGI"/>
+                        <action selector="longPressDown:" destination="nVP-mS-8Th" id="c20-nu-Yy6"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

@@ -14,4 +14,9 @@
 
 @interface SwipePlayerRootViewController : UIViewController
 
+//@property(nonatomic, strong) IBOutlet UILongPressGestureRecognizer* longPress;
+//
+//
+//- (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture;
+
 @end
