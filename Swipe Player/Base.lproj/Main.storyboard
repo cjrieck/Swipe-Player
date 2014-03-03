@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" id="LSz-3w-Hhd"/>
                     <connections>
                         <outlet property="viewControllerSubView" destination="nVP-mS-8Th" id="txx-99-Jl7"/>
-                        <segue destination="fDJ-hQ-wzR" kind="modal" identifier="songList" id="8i0-CR-PDp"/>
+                        <segue destination="fDJ-hQ-wzR" kind="modal" identifier="songList" id="wGG-vs-2DS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -121,7 +121,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-110" y="-86"/>
+            <point key="canvasLocation" x="-98" y="-58"/>
         </scene>
         <!--Song List Table View - Choose Song-->
         <scene sceneID="np1-on-t3o">

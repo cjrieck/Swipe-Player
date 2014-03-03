@@ -149,6 +149,8 @@
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
     [delegate performSongListSegue:self];
+    
+    
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes

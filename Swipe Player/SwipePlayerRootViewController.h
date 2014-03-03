@@ -15,5 +15,10 @@
 @interface SwipePlayerRootViewController : UIViewController <SwipeViewDelegate>
 
 @property(nonatomic, strong) IBOutlet SwipeView* viewControllerSubView;
+//@property(nonatomic, strong) MPMediaPickerController* mediaPicker;
+
+- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection;
+- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker;
+
 
 @end
