@@ -10,4 +10,8 @@
 
 @interface SongListTableView : UITableViewController
 
+@property(nonatomic, strong) IBOutlet UIBarButtonItem* doneButton;
+
+-(IBAction)dismissModalView:(id)sender;
+
 @end

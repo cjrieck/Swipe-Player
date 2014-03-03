@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="-110" y="-86"/>
         </scene>
-        <!--Song List Table View - Title-->
+        <!--Song List Table View - Choose Song-->
         <scene sceneID="np1-on-t3o">
             <objects>
                 <tableViewController id="2gI-6q-iRD" customClass="SongListTableView" sceneMemberID="viewController">
@@ -142,13 +142,20 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="t3V-oi-IB2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="dv6-uf-f7u"/>
+                    <navigationItem key="navigationItem" title="Choose Song" id="t3V-oi-IB2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="dv6-uf-f7u">
+                            <connections>
+                                <action selector="dismissModalView:" destination="2gI-6q-iRD" id="9nn-HV-r1j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="dv6-uf-f7u" id="tLl-2r-E4H"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIY-iA-KvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="-70"/>
+            <point key="canvasLocation" x="808" y="-86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rpj-oJ-y0K">
@@ -163,7 +170,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rz7-KE-c3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="380" y="-70"/>
+            <point key="canvasLocation" x="380" y="-86"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

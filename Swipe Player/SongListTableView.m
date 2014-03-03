@@ -14,6 +14,8 @@
 
 @implementation SongListTableView
 
+@synthesize doneButton;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -64,6 +66,12 @@
     // Configure the cell...
     
     return cell;
+}
+
+-(IBAction)dismissModalView:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        // put completion code in here (e.g. set current song)
+    }];
 }
 
 /*
