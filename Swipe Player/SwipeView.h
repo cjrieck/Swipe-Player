@@ -11,6 +11,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+@protocol SwipeViewDelegate <NSObject>
+
+- (void) performSongListSegue:(id)sender;
+
+@end
+
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {
     CGFloat screenHeight;
@@ -20,6 +26,8 @@
     double volumeLevel;
     double volumeSensitivity;
 }
+
+@property(nonatomic, strong) id<SwipeViewDelegate>delegate;
 
 // music manager/item variables
 @property(nonatomic, weak) MPMusicPlayerController* musicManager;
@@ -39,7 +47,6 @@
 @property(nonatomic, strong) IBOutlet UILongPressGestureRecognizer* longPress;
 
 - (void)customInit;
-//- (void)initMusicPlayer;
 
 - (IBAction)leftSwipeDetected:(id)sender;
 - (IBAction)rightSwipeDetected:(id)sender;
@@ -50,6 +57,5 @@
 - (void)handleNowPlayingItemChanged:(id)notification;
 - (void)handleVolumeChangedFromOutsideApp:(id)notification;
 
-//- (void)stopAndPlayNext:(long)songIndex;
 - (void)setCoverArtAndInfo:(MPMediaItem*)current;
 @end

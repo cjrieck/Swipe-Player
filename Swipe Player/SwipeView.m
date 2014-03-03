@@ -22,7 +22,10 @@
 @synthesize leftSwipe;
 @synthesize longPress;
 
+@synthesize delegate;
+
 -(void)customInit {
+    
     // set up the music manager
     musicManager = [MPMusicPlayerController applicationMusicPlayer];
     [musicManager setShuffleMode:MPMusicShuffleModeOff];
@@ -144,7 +147,7 @@
 
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
-    NSLog(@"In long press");
+    [delegate performSongListSegue:self];
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes

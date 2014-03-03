@@ -12,11 +12,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SwipeView.h"
 
-@interface SwipePlayerRootViewController : UIViewController
+@interface SwipePlayerRootViewController : UIViewController <SwipeViewDelegate>
 
-//@property(nonatomic, strong) IBOutlet UILongPressGestureRecognizer* longPress;
-//
-//
-//- (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture;
+@property(nonatomic, strong) IBOutlet SwipeView* viewControllerSubView;
 
 @end

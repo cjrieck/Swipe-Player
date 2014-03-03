@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0115B16C18C215E400CB52D3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0115B16B18C215E400CB52D3 /* AVFoundation.framework */; };
 		0115B16E18C215EE00CB52D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0115B16D18C215EE00CB52D3 /* AudioToolbox.framework */; };
+		0115B17418C4FC7200CB52D3 /* SongListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115B17318C4FC7200CB52D3 /* SongListTableView.m */; };
 		01FA3BF818BCE0970000DF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FA3BF718BCE0970000DF8D /* Foundation.framework */; };
 		01FA3BFA18BCE0970000DF8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FA3BF918BCE0970000DF8D /* CoreGraphics.framework */; };
 		01FA3BFC18BCE0970000DF8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FA3BFB18BCE0970000DF8D /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		0115B16B18C215E400CB52D3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0115B16D18C215EE00CB52D3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0115B17218C4FC7200CB52D3 /* SongListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListTableView.h; sourceTree = "<group>"; };
+		0115B17318C4FC7200CB52D3 /* SongListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListTableView.m; sourceTree = "<group>"; };
 		01FA3BF418BCE0970000DF8D /* Swipe Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FA3BF718BCE0970000DF8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01FA3BF918BCE0970000DF8D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 				01FA3C2D18BE1D570000DF8D /* SwipeView.m */,
 				01FA3C0C18BCE0970000DF8D /* SwipePlayerRootViewController.h */,
 				01FA3C0D18BCE0970000DF8D /* SwipePlayerRootViewController.m */,
+				0115B17218C4FC7200CB52D3 /* SongListTableView.h */,
+				0115B17318C4FC7200CB52D3 /* SongListTableView.m */,
 				01FA3C0F18BCE0970000DF8D /* Images.xcassets */,
 				01FA3BFE18BCE0970000DF8D /* Supporting Files */,
 			);
@@ -277,6 +282,7 @@
 				01FA3C0E18BCE0970000DF8D /* SwipePlayerRootViewController.m in Sources */,
 				01FA3C2E18BE1D570000DF8D /* SwipeView.m in Sources */,
 				01FA3C0818BCE0970000DF8D /* SwipePlayerRootAppDelegate.m in Sources */,
+				0115B17418C4FC7200CB52D3 /* SongListTableView.m in Sources */,
 				01FA3C0418BCE0970000DF8D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

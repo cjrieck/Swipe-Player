@@ -87,6 +87,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="LSz-3w-Hhd"/>
+                    <connections>
+                        <outlet property="viewControllerSubView" destination="nVP-mS-8Th" id="txx-99-Jl7"/>
+                        <segue destination="fDJ-hQ-wzR" kind="modal" identifier="songList" id="8i0-CR-PDp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="Q6J-6Y-VO7">
@@ -117,7 +121,49 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-132" y="24"/>
+            <point key="canvasLocation" x="-110" y="-86"/>
+        </scene>
+        <!--Song List Table View - Title-->
+        <scene sceneID="np1-on-t3o">
+            <objects>
+                <tableViewController id="2gI-6q-iRD" customClass="SongListTableView" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EZZ-xv-FQa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6dD-5t-cMT">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dD-5t-cMT" id="TJK-Ie-bK8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="t3V-oi-IB2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="dv6-uf-f7u"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIY-iA-KvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="-70"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rpj-oJ-y0K">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="fDJ-hQ-wzR" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UXj-sg-Ryb">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2gI-6q-iRD" kind="relationship" relationship="rootViewController" id="ecw-8l-VVv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rz7-KE-c3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="-70"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

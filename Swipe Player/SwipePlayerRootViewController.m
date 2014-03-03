@@ -14,15 +14,14 @@
 
 @implementation SwipePlayerRootViewController
 
-//@synthesize longPress;
+@synthesize viewControllerSubView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
-//    SwipeView* mainView = [[SwipeView alloc] init];
-//    [mainView customInit];
+    
+    viewControllerSubView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,11 +30,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
-//    // show modal view here of list of songs
-//    NSLog(@"In long press");
-//    
-//    
-//}
+- (void)performSongListSegue:(id)sender {
+    [self performSegueWithIdentifier:@"songList" sender:sender];
+}
 
 @end
