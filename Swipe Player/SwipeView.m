@@ -16,16 +16,18 @@
 @synthesize cover;
 @synthesize songTitle;
 @synthesize songArtist;
+@synthesize doubleTapGesture;
 @synthesize panGesture;
 @synthesize rightSwipe;
 @synthesize leftSwipe;
-@synthesize notificationCenter;
+@synthesize longPress;
+//@synthesize notificationCenter;
 
 -(void)customInit {
     // set up the music manager
     musicManager = [MPMusicPlayerController applicationMusicPlayer];
-//    [musicManager setShuffleMode:MPMusicShuffleModeDefault];
-//    [musicManager setRepeatMode:MPMusicRepeatModeDefault];
+    [musicManager setShuffleMode:MPMusicShuffleModeOff];
+    [musicManager setRepeatMode:MPMusicRepeatModeNone];
     
     // creates music queue
     [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
@@ -36,14 +38,14 @@
     
     musicCollections = [everything items];
     
-    currentSongIndex = 0;
+//    currentSongIndex = 0;
     
     // gets the screen height
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenHeight = screenRect.size.height;
     
-    MPVolumeView* volumeView = [[MPVolumeView alloc] initWithFrame:CGRectZero];
-    [self addSubview:volumeView];
+//    MPVolumeView* volumeView = [[MPVolumeView alloc] initWithFrame:CGRectZero];
+//    [self addSubview:volumeView];
     
     volumeLevel = 0.5;
     volumeSensitivity = 0.007;
@@ -51,7 +53,7 @@
     [musicManager setNowPlayingItem:musicCollections[0]];
     
     // create music notification center
-    notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter addObserver:self
                         selector:@selector(handleNowPlayingItemChanged:)
@@ -63,48 +65,26 @@
                         name:MPMusicPlayerControllerVolumeDidChangeNotification
                         object:musicManager];
     
+    
     // call on main thread
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        [musicManager beginGeneratingPlaybackNotifications];
 //    });
 //    [musicManager beginGeneratingPlaybackNotifications];
     
-    MPMediaItemArtwork* albumCover = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtwork];
-    NSString* title = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyTitle];
-    NSString* artist = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtist];
-    
-    UIImage* art = [albumCover imageWithSize:cover.bounds.size];
-    
-    if (title) {
-        songTitle.text = title;
-        
-        if (artist) {
-            songArtist.text = artist;
-            
-            if (art) {
-                cover.image = art;
-            } else {
-                // replace with filler art
-                NSLog(@"No art");
-            }
-        } else {
-            songArtist.text = @"";
-        }
-    } else {
-        songTitle.text = @"None";
-    }
+    [self setCoverArtAndInfo:musicManager.nowPlayingItem];
 
-    [[AVAudioSession sharedInstance] setDelegate: self];
+//    [[AVAudioSession sharedInstance] setDelegate: self];
 	
 	
 	// Use this code instead to allow the app sound to continue to play when the screen is locked.
 //	[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
 	
-	NSError *myErr;
-    
-    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&myErr]) {
-        NSLog(@"Audio Session error %@, %@", myErr, [myErr userInfo]);
-    }
+//	NSError *myErr;
+//    
+//    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&myErr]) {
+//        NSLog(@"Audio Session error %@, %@", myErr, [myErr userInfo]);
+//    }
 	
 }
 
@@ -116,6 +96,7 @@
             [self customInit];
 //            [musicManager beginGeneratingPlaybackNotifications];
         });
+        [musicManager beginGeneratingPlaybackNotifications];
     }
     return self;
 }
@@ -126,6 +107,7 @@
             [self customInit];
 //            [musicManager beginGeneratingPlaybackNotifications];
         });
+        [musicManager beginGeneratingPlaybackNotifications];
         //[self customInit];
     }
     return self;
@@ -148,6 +130,7 @@
 }
 
 - (IBAction)doubleTap:(id)sender {
+    [self.doubleTapGesture requireGestureRecognizerToFail:longPress];
     
     if ([musicManager playbackState] == MPMusicPlaybackStatePlaying) {
         [musicManager pause];
@@ -161,6 +144,7 @@
 
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGestureSender {
     // prevent pan gesture until both right and left swipe gestures fail
+    [self.panGesture requireGestureRecognizerToFail:longPress];
     [self.panGesture requireGestureRecognizerToFail:leftSwipe];
     [self.panGesture requireGestureRecognizerToFail:rightSwipe];
     
@@ -176,6 +160,11 @@
     }
     
     [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+}
+
+- (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
+    // show modal view here of list of songs
+    NSLog(@"In long press");
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
@@ -211,8 +200,7 @@
             if (art) {
                 cover.image = art;
             } else {
-                // replace with filler art
-                NSLog(@"No art");
+                cover.image = [UIImage imageNamed:@"albumFiller.png"];
             }
         } else {
             songArtist.text = @"";

@@ -25,17 +25,18 @@
 @property(nonatomic, weak) MPMusicPlayerController* musicManager;
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
-@property(nonatomic, strong) NSNotificationCenter* notificationCenter;
 
 // song information
 @property(nonatomic, retain) IBOutlet UIImageView* cover;
 @property(nonatomic, retain) IBOutlet UILabel* songTitle;
 @property(nonatomic, retain) IBOutlet UILabel* songArtist;
 
-// pan gestures
+// gestures
+@property(nonatomic, strong) IBOutlet UITapGestureRecognizer* doubleTapGesture;
 @property(nonatomic, strong) IBOutlet UIPanGestureRecognizer* panGesture;
 @property(nonatomic, strong) IBOutlet UISwipeGestureRecognizer* leftSwipe;
 @property(nonatomic, strong) IBOutlet UISwipeGestureRecognizer* rightSwipe;
+@property(nonatomic, strong) IBOutlet UILongPressGestureRecognizer* longPress;
 
 - (void)customInit;
 //- (void)initMusicPlayer;
@@ -44,6 +45,7 @@
 - (IBAction)rightSwipeDetected:(id)sender;
 - (IBAction)doubleTap:(id)sender;
 - (IBAction)panUpDown:(UIPanGestureRecognizer*)panGesture;
+- (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture;
 
 - (void)handleNowPlayingItemChanged:(id)notification;
 - (void)handleVolumeChangedFromOutsideApp:(id)notification;

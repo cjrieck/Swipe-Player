@@ -52,17 +52,27 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pet-ju-wgw">
+                                        <rect key="frame" x="18" y="392" width="284" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="contentStretch" x="0.0" y="1.3877787807814457e-17" width="1" height="1"/>
+                                        <color key="thumbTintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="cover" destination="Jnh-Tk-9jg" id="a1N-xn-uRV"/>
+                                    <outlet property="doubleTapGesture" destination="Mb7-Z3-O5K" id="UeD-nO-vsW"/>
                                     <outlet property="leftSwipe" destination="dS8-nt-1mI" id="wBl-rO-7vc"/>
+                                    <outlet property="longPress" destination="Rjx-09-9u6" id="ImZ-c7-StD"/>
                                     <outlet property="panGesture" destination="0rh-VB-Jel" id="lJ7-v6-6ca"/>
                                     <outlet property="rightSwipe" destination="Q6J-6Y-VO7" id="Dhn-Du-plt"/>
                                     <outlet property="songArtist" destination="tgy-Kk-hev" id="IHD-zG-7vj"/>
                                     <outlet property="songTitle" destination="y3Z-Mi-SBg" id="xkh-fG-ked"/>
                                     <outletCollection property="gestureRecognizers" destination="Mb7-Z3-O5K" appends="YES" id="eeV-lK-bc1"/>
+                                    <outletCollection property="gestureRecognizers" destination="Rjx-09-9u6" appends="YES" id="HgJ-dd-iSv"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -101,6 +111,11 @@
                         <action selector="panUpDown:" destination="nVP-mS-8Th" id="fhU-MD-QSw"/>
                     </connections>
                 </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="0.0" minimumPressDuration="1.5000000000000002" id="Rjx-09-9u6">
+                    <connections>
+                        <action selector="longPressDown:" destination="nVP-mS-8Th" id="RAb-XK-jGI"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-132" y="24"/>
         </scene>
