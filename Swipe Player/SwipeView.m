@@ -23,7 +23,7 @@
 
 -(void)customInit {
     // set up the music manager
-    musicManager = [MPMusicPlayerController iPodMusicPlayer];
+    musicManager = [MPMusicPlayerController applicationMusicPlayer];
 //    [musicManager setShuffleMode:MPMusicShuffleModeDefault];
 //    [musicManager setRepeatMode:MPMusicRepeatModeDefault];
     
@@ -63,6 +63,10 @@
                         name:MPMusicPlayerControllerVolumeDidChangeNotification
                         object:musicManager];
     
+    // call on main thread
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [musicManager beginGeneratingPlaybackNotifications];
+//    });
 //    [musicManager beginGeneratingPlaybackNotifications];
     
     MPMediaItemArtwork* albumCover = [musicCollections[currentSongIndex] valueForProperty:MPMediaItemPropertyArtwork];
@@ -108,60 +112,38 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self customInit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self customInit];
+//            [musicManager beginGeneratingPlaybackNotifications];
+        });
     }
     return self;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])){
-        [self customInit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self customInit];
+//            [musicManager beginGeneratingPlaybackNotifications];
+        });
+        //[self customInit];
     }
     return self;
 }
 
-//- (void)initMusicPlayer {
-//    musicManager = [MPMusicPlayerController iPodMusicPlayer];
-//    [musicManager setShuffleMode:MPMusicShuffleModeDefault];
-//    [musicManager setRepeatMode:MPMusicRepeatModeDefault];
-//    
-//    // creates music queue
-//    [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
-//    
-//    // get collections of songs
-//    MPMediaQuery* everything = [[MPMediaQuery alloc]init];
-//    
-//    musicCollections = [everything items];
-//    
-//}
-
 - (IBAction)leftSwipeDetected:(id)sender {
-    
-//    currentSongIndex++;
-//    
-//    if (currentSongIndex == [musicCollections count]) {
-//        currentSongIndex = [musicCollections count]-1;
-//    }
 
     [musicManager skipToNextItem];
+    currentSong = [musicManager nowPlayingItem];
     [self setCoverArtAndInfo:currentSong];
-    
-//    [self stopAndPlayNext:currentSongIndex];
     
 }
 
 - (IBAction)rightSwipeDetected:(id)sender {
     
-//    currentSongIndex--;
-//    
-//    if (currentSongIndex < 0) {
-//        currentSongIndex = 0;
-//    }
-    
     [musicManager skipToPreviousItem];
+    currentSong = [musicManager nowPlayingItem];
     [self setCoverArtAndInfo:currentSong];
-    
-//    [self stopAndPlayNext:currentSongIndex];
 
 }
 
@@ -199,25 +181,17 @@
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
     currentSong = [musicManager nowPlayingItem];
     [self setCoverArtAndInfo:currentSong];
-    
+    NSLog(@"Song Changed");
 }
 
 - (void)handleVolumeChangedFromOutsideApp:(id)notification {
     // animate volume slider once implemented
     // [_volumeSlider setValue:self.musicPlayer.volume animated:YES];
-    NSLog(@"Volume changed");
+    NSLog(@"Volume Changed");
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
-}
-
-- (void)stopAndPlayNext:(long)songIndex {
-    
-    [musicManager stop];
-    [musicManager setNowPlayingItem:musicCollections[songIndex]];
-    [musicManager play];
-    currentSong = musicCollections[songIndex];
 }
 
 - (void)setCoverArtAndInfo:(MPMediaItem*)current {

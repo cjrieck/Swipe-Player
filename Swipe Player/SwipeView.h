@@ -22,7 +22,7 @@
 }
 
 // music manager/item variables
-@property(nonatomic, strong) MPMusicPlayerController* musicManager;
+@property(nonatomic, weak) MPMusicPlayerController* musicManager;
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
 @property(nonatomic, strong) NSNotificationCenter* notificationCenter;
@@ -48,6 +48,6 @@
 - (void)handleNowPlayingItemChanged:(id)notification;
 - (void)handleVolumeChangedFromOutsideApp:(id)notification;
 
-- (void)stopAndPlayNext:(long)songIndex;
+//- (void)stopAndPlayNext:(long)songIndex;
 - (void)setCoverArtAndInfo:(MPMediaItem*)current;
 @end
