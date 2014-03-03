@@ -20,7 +20,7 @@
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {
     CGFloat screenHeight;
-    NSArray* musicCollections;
+//    NSArray* musicCollections;
     
     long currentSongIndex;
     double volumeLevel;
@@ -33,6 +33,7 @@
 @property(nonatomic, weak) MPMusicPlayerController* musicManager;
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
+@property(nonatomic, strong) NSArray* musicCollections;
 
 // song information
 @property(nonatomic, retain) IBOutlet UIImageView* cover;

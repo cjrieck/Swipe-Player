@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import "SwipeView.h"
 
 @interface SongListTableView : UITableViewController
-
+{
+    NSArray* songCollection;
+}
 @property(nonatomic, strong) IBOutlet UIBarButtonItem* doneButton;
+
+@property(nonatomic, strong) MPMusicPlayerController* musicPlayer;
+@property(nonatomic, strong) NSArray* songCollection;
 
 -(IBAction)dismissModalView:(id)sender;
 

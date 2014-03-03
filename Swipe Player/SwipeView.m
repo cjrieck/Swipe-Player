@@ -13,6 +13,7 @@
 @synthesize musicManager;
 @synthesize mediaQuery;
 @synthesize currentSong;
+@synthesize musicCollections;
 @synthesize cover;
 @synthesize songTitle;
 @synthesize songArtist;

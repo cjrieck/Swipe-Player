@@ -15,6 +15,8 @@
 @implementation SongListTableView
 
 @synthesize doneButton;
+@synthesize songCollection;
+@synthesize musicPlayer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,6 +36,19 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    SwipeView* previousView = [[SwipeView alloc] init];
+    
+     musicPlayer = previousView.musicManager;
+    
+//    [musicPlayer setQueueWithQuery:[MPMediaQuery songsQuery]];
+    //    [musicManager setShuffleMode:];
+    
+    // get collections of songs
+    MPMediaQuery* everything = [[MPMediaQuery alloc]init];
+    
+    songCollection = [everything items];
+//    NSLog(@"%i", [songCollection count]);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,24 +61,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return [songCollection count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    
+    cell.textLabel.text = [songCollection[indexPath.row] valueForProperty:MPMediaItemPropertyTitle];
+    NSLog(@"%@", cell.textLabel.text);
     
     return cell;
 }
@@ -71,9 +89,17 @@
 -(IBAction)dismissModalView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         // put completion code in here (e.g. set current song)
+        SwipeView* previousView = [[SwipeView alloc] init];
+        
+        previousView.musicManager = musicPlayer;
     }];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [musicPlayer setNowPlayingItem:songCollection[indexPath.row]];
+    
+    [self dismissModalView:self];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
