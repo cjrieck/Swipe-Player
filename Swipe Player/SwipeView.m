@@ -10,10 +10,10 @@
 
 @implementation SwipeView
 
-@synthesize musicManager;
-@synthesize mediaQuery;
-@synthesize currentSong;
-@synthesize musicCollections;
+//@synthesize musicManager;
+//@synthesize mediaQuery;
+//@synthesize currentSong;
+//@synthesize musicCollections;
 @synthesize cover;
 @synthesize songTitle;
 @synthesize songArtist;
@@ -28,18 +28,20 @@
 -(void)customInit {
     
     // set up the music manager
-    musicManager = [MPMusicPlayerController applicationMusicPlayer];
-    [musicManager setShuffleMode:MPMusicShuffleModeOff];
-    [musicManager setRepeatMode:MPMusicRepeatModeNone];
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+    
+    globalMediaPlayer.musicManager = [MPMusicPlayerController applicationMusicPlayer];
+    [globalMediaPlayer.musicManager setShuffleMode:MPMusicShuffleModeOff];
+    [globalMediaPlayer.musicManager setRepeatMode:MPMusicRepeatModeNone];
     
     // creates music queue
-    [musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
+    [globalMediaPlayer.musicManager setQueueWithQuery:[MPMediaQuery songsQuery]];
     //    [musicManager setShuffleMode:];
     
     // get collections of songs
     MPMediaQuery* everything = [[MPMediaQuery alloc]init];
     
-    musicCollections = [everything items];
+    globalMediaPlayer.musicCollection = [everything items];
     
 //    currentSongIndex = 0;
     
@@ -53,7 +55,7 @@
     volumeLevel = 0.5;
     volumeSensitivity = 0.007;
     
-    [musicManager setNowPlayingItem:musicCollections[0]];
+    [globalMediaPlayer.musicManager setNowPlayingItem:globalMediaPlayer.musicCollection[0]];
     
     // create music notification center
     NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
@@ -61,14 +63,14 @@
     [notificationCenter addObserver:self
                         selector:@selector(handleNowPlayingItemChanged:)
                         name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
-                        object:musicManager];
+                        object:globalMediaPlayer.musicManager];
     
     [notificationCenter addObserver:self
                         selector:@selector(handleVolumeChangedFromOutsideApp:)
                         name:MPMusicPlayerControllerVolumeDidChangeNotification
-                        object:musicManager];
+                        object:globalMediaPlayer.musicManager];
     
-    [self setCoverArtAndInfo:musicManager.nowPlayingItem];
+    [self setCoverArtAndInfo:globalMediaPlayer.musicManager.nowPlayingItem];
 	
 }
 
@@ -78,9 +80,10 @@
     if (self) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self customInit];
-//            [musicManager beginGeneratingPlaybackNotifications];
         });
-        [musicManager beginGeneratingPlaybackNotifications];
+        MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+        [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
+//        [self setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
     }
     return self;
 }
@@ -89,39 +92,39 @@
     if ((self = [super initWithCoder:aDecoder])){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self customInit];
-//            [musicManager beginGeneratingPlaybackNotifications];
         });
-        [musicManager beginGeneratingPlaybackNotifications];
-        //[self customInit];
+        MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+        [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
     }
     return self;
 }
 
 - (IBAction)leftSwipeDetected:(id)sender {
-    
-    [musicManager skipToNextItem];
-    currentSong = [musicManager nowPlayingItem];
-    [self setCoverArtAndInfo:currentSong];
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+    [globalMediaPlayer.musicManager skipToNextItem];
+    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
+    [self setCoverArtAndInfo:globalMediaPlayer.currentSong];
     
 }
 
 - (IBAction)rightSwipeDetected:(id)sender {
-    
-    [musicManager skipToPreviousItem];
-    currentSong = [musicManager nowPlayingItem];
-    [self setCoverArtAndInfo:currentSong];
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+    [globalMediaPlayer.musicManager skipToPreviousItem];
+    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
+    [self setCoverArtAndInfo:globalMediaPlayer.currentSong];
 
 }
 
 - (IBAction)doubleTap:(id)sender {
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
     [self.doubleTapGesture requireGestureRecognizerToFail:longPress];
     
-    if ([musicManager playbackState] == MPMusicPlaybackStatePlaying) {
-        [musicManager pause];
+    if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+        [globalMediaPlayer.musicManager pause];
     }
     
     else {
-        [musicManager play];
+        [globalMediaPlayer.musicManager play];
     }
     
 }
@@ -154,8 +157,9 @@
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
-    currentSong = [musicManager nowPlayingItem];
-    [self setCoverArtAndInfo:currentSong];
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+//    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
+    [self setCoverArtAndInfo:globalMediaPlayer.currentSong];
     NSLog(@"Song Changed");
 }
 

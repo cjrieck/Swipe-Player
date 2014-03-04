@@ -10,6 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "MediaPlayerClass.h"
 
 @protocol SwipeViewDelegate <NSObject>
 
@@ -22,7 +23,7 @@
     CGFloat screenHeight;
 //    NSArray* musicCollections;
     
-    long currentSongIndex;
+//    long currentSongIndex;
     double volumeLevel;
     double volumeSensitivity;
 }
@@ -30,10 +31,10 @@
 @property(nonatomic, strong) id<SwipeViewDelegate>delegate;
 
 // music manager/item variables
-@property(nonatomic, weak) MPMusicPlayerController* musicManager;
-@property(nonatomic, strong) MPMediaQuery* mediaQuery;
-@property(nonatomic, copy) MPMediaItem* currentSong;
-@property(nonatomic, strong) NSArray* musicCollections;
+//@property(nonatomic, weak) MPMusicPlayerController* musicManager;
+//@property(nonatomic, strong) MPMediaQuery* mediaQuery;
+//@property(nonatomic, copy) MPMediaItem* currentSong;
+//@property(nonatomic, strong) NSArray* musicCollections;
 
 // song information
 @property(nonatomic, retain) IBOutlet UIImageView* cover;

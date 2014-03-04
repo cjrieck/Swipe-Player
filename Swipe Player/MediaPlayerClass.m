@@ -12,6 +12,13 @@ static MediaPlayerClass* globalMediaPlayer = nil;
 
 @implementation MediaPlayerClass
 
+@synthesize musicManager;
+@synthesize mediaQuery;
+@synthesize currentSong;
+@synthesize musicCollection;
+//@synthesize cover;
+//@synthesize songTitle;
+//@synthesize songArtist;
 
 +(MediaPlayerClass*)globalMediaPlayerInit {
     if (globalMediaPlayer == nil) {
@@ -19,4 +26,5 @@ static MediaPlayerClass* globalMediaPlayer = nil;
     }
     return globalMediaPlayer;
 }
+
 @end

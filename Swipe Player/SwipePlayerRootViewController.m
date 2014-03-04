@@ -21,7 +21,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    MPMediaPickerController* mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
     viewControllerSubView.delegate = self;
 }
 
@@ -34,10 +33,7 @@
 - (void)performSongListSegue:(id)sender {
     
     [self performSegueWithIdentifier:@"songList" sender:sender];
-//    MPMediaPickerController* mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
-//    [mediaPicker setDelegate:self];
-//    mediaPicker.prompt = NSLocalizedString(@"Add songs", "Prompt in item picker");
-//    [self presentViewController:mediaPicker animated:YES completion:^{}];
+
 }
 
 //- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {

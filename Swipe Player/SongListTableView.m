@@ -36,9 +36,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    SwipeView* previousView = [[SwipeView alloc] init];
     
-     musicPlayer = previousView.musicManager;
+//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+//    globalMediaPlayer.musicPlayer = previousView.musicManager;
     
 //    [musicPlayer setQueueWithQuery:[MPMediaQuery songsQuery]];
     //    [musicManager setShuffleMode:];
@@ -81,23 +81,34 @@
     // Configure the cell...
     
     cell.textLabel.text = [songCollection[indexPath.row] valueForProperty:MPMediaItemPropertyTitle];
-    NSLog(@"%@", cell.textLabel.text);
     
     return cell;
 }
 
 -(IBAction)dismissModalView:(id)sender {
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+    
     [self dismissViewControllerAnimated:YES completion:^{
         // put completion code in here (e.g. set current song)
-        SwipeView* previousView = [[SwipeView alloc] init];
-        
-        previousView.musicManager = musicPlayer;
+//        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
+//        [globalMediaPlayer.musicManager play];
+//        [[SwipeView alloc] setCoverArtAndInfo:globalMediaPlayer.currentSong];
+//        SwipeView* previous = [[SwipeView alloc]init];
+//        [previous setCoverArtAndInfo:globalMediaPlayer.currentSong];
+//        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
+//        previousView.musicManager = musicPlayer;
+//        [SwipeView ]
     }];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [musicPlayer setNowPlayingItem:songCollection[indexPath.row]];
+    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+    [globalMediaPlayer.musicManager stop];
+    [globalMediaPlayer.musicManager setNowPlayingItem:songCollection[indexPath.row]];
+    [globalMediaPlayer.musicManager play];
+    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
     
+//    [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
     [self dismissModalView:self];
 }
 /*

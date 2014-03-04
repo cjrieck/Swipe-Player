@@ -115,7 +115,7 @@
                         <action selector="panUpDown:" destination="nVP-mS-8Th" id="fhU-MD-QSw"/>
                     </connections>
                 </panGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="0.0" minimumPressDuration="1.5000000000000002" id="Rjx-09-9u6">
+                <pongPressGestureRecognizer allowableMovement="0.0" minimumPressDuration="0.99999999999999989" id="Rjx-09-9u6">
                     <connections>
                         <action selector="longPressDown:" destination="nVP-mS-8Th" id="c20-nu-Yy6"/>
                     </connections>
@@ -160,6 +160,7 @@
         <!--Navigation Controller-->
         <scene sceneID="rpj-oJ-y0K">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rz7-KE-c3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="fDJ-hQ-wzR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UXj-sg-Ryb">
                         <autoresizingMask key="autoresizingMask"/>
@@ -168,7 +169,6 @@
                         <segue destination="2gI-6q-iRD" kind="relationship" relationship="rootViewController" id="ecw-8l-VVv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rz7-KE-c3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="380" y="-86"/>
         </scene>

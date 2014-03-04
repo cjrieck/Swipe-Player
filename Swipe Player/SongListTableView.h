@@ -15,6 +15,7 @@
 @interface SongListTableView : UITableViewController
 {
     NSArray* songCollection;
+    SwipeView* previousView;
 }
 @property(nonatomic, strong) IBOutlet UIBarButtonItem* doneButton;
 

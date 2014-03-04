@@ -7,13 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface MediaPlayerClass : NSObject
 {
-    // add data members
+    MPMusicPlayerController* musicManager;
+    MPMediaQuery* mediaQuery;
+    MPMediaItem* currentSong;
+    NSArray* musicCollection;
+    
+//    UIImageView* cover;
+//    UILabel* songTitle;
+//    UILabel* songArtist;
 }
 
-// add properties for data members
+@property(nonatomic, strong) MPMusicPlayerController* musicManager;
+@property(nonatomic, strong) MPMediaQuery* mediaQuery;
+@property(nonatomic, copy) MPMediaItem* currentSong;
+@property(nonatomic, strong) NSArray* musicCollection;
+
+//@property(nonatomic, retain) UIImageView* cover;
+//@property(nonatomic, retain) UILabel* songTitle;
+//@property(nonatomic, retain) UILabel* songArtist;
 
 +(MediaPlayerClass*)globalMediaPlayerInit;
+
 @end
