@@ -17,6 +17,7 @@
 @synthesize doneButton;
 @synthesize songCollection;
 @synthesize musicPlayer;
+//@synthesize coverArt;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -57,6 +58,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:YES];
+//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+//    [self.parentViewController setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -80,6 +87,18 @@
     
     // Configure the cell...
     
+    UIImageView* coverArt = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 67, 67)];
+    
+    MPMediaItemArtwork* artwork = [songCollection[indexPath.row] valueForProperty:MPMediaItemPropertyArtwork];
+
+    UIImage* art = [artwork imageWithSize:coverArt.bounds.size];
+    
+    if (art) {
+        cell.imageView.image = art;
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"albumFiller.png"];
+    }
+    
     cell.textLabel.text = [songCollection[indexPath.row] valueForProperty:MPMediaItemPropertyTitle];
     
     return cell;
@@ -93,7 +112,7 @@
 //        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
 //        [globalMediaPlayer.musicManager play];
 //        [[SwipeView alloc] setCoverArtAndInfo:globalMediaPlayer.currentSong];
-//        SwipeView* previous = [[SwipeView alloc]init];
+        
 //        [previous setCoverArtAndInfo:globalMediaPlayer.currentSong];
 //        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
 //        previousView.musicManager = musicPlayer;

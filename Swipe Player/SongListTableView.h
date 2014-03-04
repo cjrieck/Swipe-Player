@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "SwipeView.h"
+#import "SwipePlayerRootViewController.h"
 
 @interface SongListTableView : UITableViewController
 {
@@ -21,6 +22,8 @@
 
 @property(nonatomic, strong) MPMusicPlayerController* musicPlayer;
 @property(nonatomic, strong) NSArray* songCollection;
+
+//@property(nonatomic, strong) IBOutlet UIImageView* coverArt;
 
 -(IBAction)dismissModalView:(id)sender;
 

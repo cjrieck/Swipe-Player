@@ -117,7 +117,7 @@
 
 - (IBAction)doubleTap:(id)sender {
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-    [self.doubleTapGesture requireGestureRecognizerToFail:longPress];
+//    [self.doubleTapGesture requireGestureRecognizerToFail:longPress];
     
     if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
         [globalMediaPlayer.musicManager pause];
