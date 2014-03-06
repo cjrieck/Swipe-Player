@@ -69,6 +69,7 @@
                         selector:@selector(handleVolumeChangedFromOutsideApp:)
                         name:MPMusicPlayerControllerVolumeDidChangeNotification
                         object:globalMediaPlayer.musicManager];
+    [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
     
     [self setCoverArtAndInfo:globalMediaPlayer.musicManager.nowPlayingItem];
 	
@@ -81,9 +82,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self customInit];
         });
-        MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-        [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
-//        [self setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
     }
     return self;
 }
@@ -93,8 +91,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self customInit];
         });
-        MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-        [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
     }
     return self;
 }
@@ -117,7 +113,6 @@
 
 - (IBAction)doubleTap:(id)sender {
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-//    [self.doubleTapGesture requireGestureRecognizerToFail:longPress];
     
     if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
         [globalMediaPlayer.musicManager pause];
@@ -151,6 +146,7 @@
 
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
+    [self resignFirstResponder];
     [delegate performSongListSegue:self];
     
     

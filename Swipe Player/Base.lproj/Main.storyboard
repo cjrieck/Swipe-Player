@@ -105,7 +105,7 @@
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer enabled="NO" direction="up" id="rwz-YP-jfR"/>
                 <swipeGestureRecognizer enabled="NO" direction="down" id="UUU-WL-qzn"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="Mb7-Z3-O5K">
+                <tapGestureRecognizer cancelsTouchesInView="NO" numberOfTapsRequired="2" id="Mb7-Z3-O5K">
                     <connections>
                         <action selector="doubleTap:" destination="nVP-mS-8Th" id="pcX-Be-Bx0"/>
                     </connections>

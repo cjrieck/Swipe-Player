@@ -18,6 +18,8 @@
     MPMediaItem* currentSong;
     NSArray* musicCollection;
     
+    MPMusicPlaybackState* currentPlaybackState;
+    
 //    UIImageView* cover;
 //    UILabel* songTitle;
 //    UILabel* songArtist;
@@ -27,6 +29,7 @@
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
 @property(nonatomic, strong) NSArray* musicCollection;
+//@property(nonatomic, weak) MPMusicPlaybackState* currentPlaybackState;
 
 //@property(nonatomic, retain) UIImageView* cover;
 //@property(nonatomic, retain) UILabel* songTitle;

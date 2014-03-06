@@ -37,16 +37,16 @@
 //@property(nonatomic, strong) NSArray* musicCollections;
 
 // song information
-@property(nonatomic, retain) IBOutlet UIImageView* cover;
-@property(nonatomic, retain) IBOutlet UILabel* songTitle;
-@property(nonatomic, retain) IBOutlet UILabel* songArtist;
+@property(nonatomic, strong) IBOutlet UIImageView* cover;
+@property(nonatomic, strong) IBOutlet UILabel* songTitle;
+@property(nonatomic, strong) IBOutlet UILabel* songArtist;
 
 // gestures
-@property(nonatomic, strong) IBOutlet UITapGestureRecognizer* doubleTapGesture;
-@property(nonatomic, strong) IBOutlet UIPanGestureRecognizer* panGesture;
-@property(nonatomic, strong) IBOutlet UISwipeGestureRecognizer* leftSwipe;
-@property(nonatomic, strong) IBOutlet UISwipeGestureRecognizer* rightSwipe;
-@property(nonatomic, strong) IBOutlet UILongPressGestureRecognizer* longPress;
+@property(nonatomic, retain) IBOutlet UITapGestureRecognizer* doubleTapGesture;
+@property(nonatomic, retain) IBOutlet UIPanGestureRecognizer* panGesture;
+@property(nonatomic, retain) IBOutlet UISwipeGestureRecognizer* leftSwipe;
+@property(nonatomic, retain) IBOutlet UISwipeGestureRecognizer* rightSwipe;
+@property(nonatomic, retain) IBOutlet UILongPressGestureRecognizer* longPress;
 
 - (void)customInit;
 

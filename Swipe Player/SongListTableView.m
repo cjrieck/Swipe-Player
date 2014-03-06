@@ -38,12 +38,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-//    globalMediaPlayer.musicPlayer = previousView.musicManager;
-    
-//    [musicPlayer setQueueWithQuery:[MPMediaQuery songsQuery]];
-    //    [musicManager setShuffleMode:];
-    
     // get collections of songs
     MPMediaQuery* everything = [[MPMediaQuery alloc]init];
     
@@ -60,8 +54,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:YES];
-//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-//    [self.parentViewController setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
+
 }
 
 #pragma mark - Table view data source
@@ -105,29 +98,22 @@
 }
 
 -(IBAction)dismissModalView:(id)sender {
-    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        // put completion code in here (e.g. set current song)
-//        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
-//        [globalMediaPlayer.musicManager play];
-//        [[SwipeView alloc] setCoverArtAndInfo:globalMediaPlayer.currentSong];
-        
-//        [previous setCoverArtAndInfo:globalMediaPlayer.currentSong];
-//        [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
-//        previousView.musicManager = musicPlayer;
-//        [SwipeView ]
-    }];
+//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+//    [self.view addGestureRecognizer:sender];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-    [globalMediaPlayer.musicManager stop];
+    if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+        [globalMediaPlayer.musicManager stop];
+    }
+    
     [globalMediaPlayer.musicManager setNowPlayingItem:songCollection[indexPath.row]];
     [globalMediaPlayer.musicManager play];
-    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
     
-//    [previousView setCoverArtAndInfo:[globalMediaPlayer.musicManager nowPlayingItem]];
+    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
+    [self resignFirstResponder];
     [self dismissModalView:self];
 }
 /*
