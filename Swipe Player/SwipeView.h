@@ -21,20 +21,12 @@
 @interface SwipeView : UIView<UIGestureRecognizerDelegate>
 {
     CGFloat screenHeight;
-//    NSArray* musicCollections;
-    
-//    long currentSongIndex;
+
     double volumeLevel;
     double volumeSensitivity;
 }
 
 @property(nonatomic, strong) id<SwipeViewDelegate>delegate;
-
-// music manager/item variables
-//@property(nonatomic, weak) MPMusicPlayerController* musicManager;
-//@property(nonatomic, strong) MPMediaQuery* mediaQuery;
-//@property(nonatomic, copy) MPMediaItem* currentSong;
-//@property(nonatomic, strong) NSArray* musicCollections;
 
 // song information
 @property(nonatomic, strong) IBOutlet UIImageView* cover;
@@ -57,7 +49,7 @@
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture;
 
 - (void)handleNowPlayingItemChanged:(id)notification;
-- (void)handleVolumeChangedFromOutsideApp:(id)notification;
+//- (void)handleVolumeChangedFromOutsideApp:(id)notification;
 
 - (void)setCoverArtAndInfo:(MPMediaItem*)current;
 @end

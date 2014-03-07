@@ -22,6 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     viewControllerSubView.delegate = self;
+    [SwipeView alloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,14 +37,4 @@
 
 }
 
-//- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
-//    [self dismissViewControllerAnimated:YES completion:^{}];
-//    SwipeView* previous = [[SwipeView alloc] init];
-//    [previous.musicManager setQueueWithItemCollection:mediaItemCollection];
-//    
-//}
-//
-//-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
-//    [self dismissViewControllerAnimated:YES completion:^{}];
-//}
 @end

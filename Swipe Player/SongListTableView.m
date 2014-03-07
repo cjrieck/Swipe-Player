@@ -100,6 +100,7 @@
 -(IBAction)dismissModalView:(id)sender {
 //    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
 //    [self.view addGestureRecognizer:sender];
+    [sender resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -113,7 +114,7 @@
     [globalMediaPlayer.musicManager play];
     
     globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
-    [self resignFirstResponder];
+    
     [self dismissModalView:self];
 }
 /*

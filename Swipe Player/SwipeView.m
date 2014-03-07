@@ -65,10 +65,11 @@
                         name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
                         object:globalMediaPlayer.musicManager];
     
-    [notificationCenter addObserver:self
-                        selector:@selector(handleVolumeChangedFromOutsideApp:)
-                        name:MPMusicPlayerControllerVolumeDidChangeNotification
-                        object:globalMediaPlayer.musicManager];
+//    [notificationCenter addObserver:self
+//                        selector:@selector(handleVolumeChangedFromOutsideApp:)
+//                        name:MPMusicPlayerControllerVolumeDidChangeNotification
+//                        object:globalMediaPlayer.musicManager];
+    
     [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
     
     [self setCoverArtAndInfo:globalMediaPlayer.musicManager.nowPlayingItem];
@@ -159,11 +160,10 @@
     NSLog(@"Song Changed");
 }
 
-- (void)handleVolumeChangedFromOutsideApp:(id)notification {
-    // animate volume slider once implemented
-    // [_volumeSlider setValue:self.musicPlayer.volume animated:YES];
-    NSLog(@"Volume Changed");
-}
+//- (void)handleVolumeChangedFromOutsideApp:(id)notification {
+//    
+//    NSLog(@"Volume Changed");
+//}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
