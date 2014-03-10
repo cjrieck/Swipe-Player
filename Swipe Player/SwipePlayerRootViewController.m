@@ -20,9 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    viewControllerSubView.delegate = self;
-    [SwipeView alloc];
+    
+    viewControllerSubView.delegate = self; // set the delegate to the subview
+//    [SwipeView alloc]; // initializes the gestures once the modal view is dismissed
 }
 
 - (void)didReceiveMemoryWarning

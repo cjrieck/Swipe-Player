@@ -147,7 +147,7 @@
 
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
-    [self resignFirstResponder];
+//    [self resignFirstResponder];
     [delegate performSongListSegue:self];
     
     

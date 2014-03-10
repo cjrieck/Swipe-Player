@@ -52,10 +52,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:YES];
-
-}
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:YES];
+//
+//}
 
 #pragma mark - Table view data source
 
@@ -80,7 +80,7 @@
     
     // Configure the cell...
     
-    UIImageView* coverArt = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 67, 67)];
+    UIImageView* coverArt = [[UIImageView alloc] initWithFrame:CGRectMake(67, 67, 67, 67)];
     
     MPMediaItemArtwork* artwork = [songCollection[indexPath.row] valueForProperty:MPMediaItemPropertyArtwork];
 
@@ -97,12 +97,13 @@
     return cell;
 }
 
--(IBAction)dismissModalView:(id)sender {
-//    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-//    [self.view addGestureRecognizer:sender];
-    [sender resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//-(IBAction)dismissModalView:(id)sender {
+////    MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
+////    [self.view addGestureRecognizer:sender];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [self resignFirstResponder];
+//    }];
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
@@ -115,7 +116,9 @@
     
     globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
     
-    [self dismissModalView:self];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+//    [self dismissModalView:self];
 }
 /*
 // Override to support conditional editing of the table view.
