@@ -41,8 +41,12 @@
     // get collections of songs
     MPMediaQuery* everything = [[MPMediaQuery alloc]init];
     
+    NSLog(@"VIEW DID LOAD TABLE VIEW");
+    
     songCollection = [everything items];
+
 //    NSLog(@"%i", [songCollection count]);
+    
     
 }
 

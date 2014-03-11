@@ -65,10 +65,10 @@
                         name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
                         object:globalMediaPlayer.musicManager];
     
-//    [notificationCenter addObserver:self
-//                        selector:@selector(handleVolumeChangedFromOutsideApp:)
-//                        name:MPMusicPlayerControllerVolumeDidChangeNotification
-//                        object:globalMediaPlayer.musicManager];
+    [notificationCenter addObserver:self
+                        selector:@selector(handleVolumeChangedFromOutsideApp:)
+                        name:MPMusicPlayerControllerVolumeDidChangeNotification
+                        object:globalMediaPlayer.musicManager];
     
     [globalMediaPlayer.musicManager beginGeneratingPlaybackNotifications];
     
@@ -148,9 +148,9 @@
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
 //    [self resignFirstResponder];
+    NSLog(@"In LONG PRESS DOWN");
     [delegate performSongListSegue:self];
-    
-    
+//    [self resignFirstResponder];
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
@@ -160,10 +160,10 @@
     NSLog(@"Song Changed");
 }
 
-//- (void)handleVolumeChangedFromOutsideApp:(id)notification {
-//    
-//    NSLog(@"Volume Changed");
-//}
+- (void)handleVolumeChangedFromOutsideApp:(id)notification {
+    
+    NSLog(@"Volume Changed");
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;

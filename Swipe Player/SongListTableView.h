@@ -25,6 +25,6 @@
 
 //@property(nonatomic, strong) IBOutlet UIImageView* coverArt;
 
--(IBAction)dismissModalView:(id)sender;
+//-(IBAction)dismissModalView:(id)sender;
 
 @end

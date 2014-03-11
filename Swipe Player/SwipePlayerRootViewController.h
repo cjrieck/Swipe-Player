@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "SwipeView.h"
+#import "SongListTableView.h"
 
 @interface SwipePlayerRootViewController : UIViewController <SwipeViewDelegate>
 

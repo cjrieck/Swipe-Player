@@ -18,7 +18,7 @@
 
 @end
 
-@interface SwipeView : UIView<UIGestureRecognizerDelegate>
+@interface SwipeView : UIView <UIGestureRecognizerDelegate>
 {
     CGFloat screenHeight;
 
