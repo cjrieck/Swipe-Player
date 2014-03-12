@@ -147,7 +147,6 @@
 
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show modal view here of list of songs
-//    [self resignFirstResponder];
     NSLog(@"In LONG PRESS DOWN");
     [delegate performSongListSegue:self];
 //    [self resignFirstResponder];
@@ -155,7 +154,6 @@
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
-//    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
     [self setCoverArtAndInfo:globalMediaPlayer.currentSong];
     NSLog(@"Song Changed");
 }
