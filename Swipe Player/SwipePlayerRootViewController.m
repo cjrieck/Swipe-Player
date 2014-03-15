@@ -38,7 +38,12 @@
 - (void)performSongListSegue:(id)sender {
     
     NSLog(@"In PERFORM SONG LIST SEGUE");
-    [self performSegueWithIdentifier:@"songList" sender:self];
+//    SongListTableView* nextView = [[SongListTableView alloc] init];
+    [self performSegueWithIdentifier:@"songList" sender:sender];
+//    [self resignFirstResponder];
+//    [self.navigationController pushViewController:nextView animated:YES];
+//    [self.navigationController performSegueWithIdentifier:@"songList" sender:sender];
+    
 }
 
 @end

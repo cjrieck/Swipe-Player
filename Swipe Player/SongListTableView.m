@@ -44,7 +44,7 @@
     NSLog(@"VIEW DID LOAD TABLE VIEW");
     
     songCollection = [everything items];
-
+    
 //    NSLog(@"%i", [songCollection count]);
     
     

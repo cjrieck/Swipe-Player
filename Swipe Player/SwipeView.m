@@ -146,10 +146,13 @@
 }
 
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
-    // show modal view here of list of songs
-    NSLog(@"In LONG PRESS DOWN");
-    [delegate performSongListSegue:self];
-//    [self resignFirstResponder];
+    // show view here of list of songs
+    
+    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"In LONG PRESS DOWN");
+        [delegate performSongListSegue:self];
+    }
+    
 }
 
 - (void)handleNowPlayingItemChanged:(id)notification { // gets called when song changes
