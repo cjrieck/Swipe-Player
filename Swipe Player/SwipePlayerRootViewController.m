@@ -30,7 +30,7 @@
     NSLog(@"VIEW DID LOAD SWIPLE PLAYER ROOT VIEW");
     
     mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
-    //    mediaPicker.delegate = self;
+    mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = NO;
     mediaPicker.prompt = @"Choose Song";
 }
@@ -72,6 +72,7 @@
 //    
 //    globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
 
+    NSLog(@"%@", [selectedSong valueForProperty:MPMediaItemPropertyTitle]);
     
     [self dismissViewControllerAnimated:YES completion:^{
         MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
