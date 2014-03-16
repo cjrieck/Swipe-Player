@@ -68,34 +68,27 @@
 {
 
     // Return the number of sections.
-    return 27;
+//    return 27;
+    return 1;
 }
 
-- (NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return sections;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return index;
-}
+//- (NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
+//    return sections;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+//    return index;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-//    NSMutableArray* songTitles = [[NSMutableArray alloc] init];
-//    for (int i = 0; i < [songCollection count]; i++) {
-//        [songTitles addObject:[songCollection[i] title]];
-//    }
-//    
-//    NSArray* sortedArray = [songTitles sortedArrayUsingSelector:
-//                   @selector(localizedCaseInsensitiveCompare:)];
-//
     
-    NSArray *sectionArray = [songCollection filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]];
-    return [sectionArray count];
-    //    return [sections]
-//    return [songCollection count];
+//    NSArray *sectionArray = [songCollection filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]];
+//    return [sectionArray count];
+//    //    return [sections]
+    return [songCollection count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,6 +131,7 @@
     
     [globalMediaPlayer.musicManager setNowPlayingItem:songCollection[indexPath.row]];
     [globalMediaPlayer.musicManager play];
+    globalMediaPlayer.nowPlaying = true;
 //    [globalMediaPlayer.musicManager playbackState] = MPMusicPlaybackStatePlaying;
     
     globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];

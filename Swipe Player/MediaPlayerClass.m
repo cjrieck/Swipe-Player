@@ -16,6 +16,7 @@ static MediaPlayerClass* globalMediaPlayer = nil;
 @synthesize mediaQuery;
 @synthesize currentSong;
 @synthesize musicCollection;
+@synthesize nowPlaying;
 //@synthesize cover;
 //@synthesize songTitle;
 //@synthesize songArtist;

@@ -74,6 +74,8 @@
     
     [self setCoverArtAndInfo:globalMediaPlayer.musicManager.nowPlayingItem];
 	
+    globalMediaPlayer.nowPlaying = false;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -117,14 +119,17 @@
     
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
     
-    if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+//    if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+    if (globalMediaPlayer.nowPlaying) {
         NSLog(@"PLAYING AND ABOUT TO STOP");
         [globalMediaPlayer.musicManager pause];
+        globalMediaPlayer.nowPlaying = false;
     }
     
     else {
         NSLog(@"STOPPED AND ABOUT TO PLAY");
         [globalMediaPlayer.musicManager play];
+        globalMediaPlayer.nowPlaying = true;
     }
     
 }

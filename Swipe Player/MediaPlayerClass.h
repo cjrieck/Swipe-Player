@@ -17,6 +17,7 @@
     MPMediaQuery* mediaQuery;
     MPMediaItem* currentSong;
     NSArray* musicCollection;
+    BOOL nowPlaying;
     
     MPMusicPlaybackState* currentPlaybackState;
     
@@ -29,6 +30,8 @@
 @property(nonatomic, strong) MPMediaQuery* mediaQuery;
 @property(nonatomic, copy) MPMediaItem* currentSong;
 @property(nonatomic, strong) NSArray* musicCollection;
+
+@property(nonatomic) BOOL nowPlaying;
 //@property(nonatomic, weak) MPMusicPlaybackState* currentPlaybackState;
 
 //@property(nonatomic, retain) UIImageView* cover;
