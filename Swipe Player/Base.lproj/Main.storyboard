@@ -136,7 +136,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Choose Song" id="IpS-tn-oPV">
-                        <barButtonItem key="backBarButtonItem" title="Now Playing" id="aJv-QY-bNf"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="aJv-QY-bNf"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIY-iA-KvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

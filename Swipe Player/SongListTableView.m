@@ -46,9 +46,6 @@
     songCollection = [everything items];
     sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
     
-//    NSLog(@"%i", [songCollection count]);
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,11 +53,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:YES];
-//
-//}
 
 #pragma mark - Table view data source
 

@@ -19,11 +19,7 @@
     NSArray* musicCollection;
     BOOL nowPlaying;
     
-    MPMusicPlaybackState* currentPlaybackState;
-    
-//    UIImageView* cover;
-//    UILabel* songTitle;
-//    UILabel* songArtist;
+//    MPMusicPlaybackState* currentPlaybackState;
 }
 
 @property(nonatomic, strong) MPMusicPlayerController* musicManager;
@@ -31,12 +27,9 @@
 @property(nonatomic, copy) MPMediaItem* currentSong;
 @property(nonatomic, strong) NSArray* musicCollection;
 
+// using BOOL to bypass playbackState == MPMusicPlaybackStatePlaying conditional
+// in SwipeView.m on doubleTap
 @property(nonatomic) BOOL nowPlaying;
-//@property(nonatomic, weak) MPMusicPlaybackState* currentPlaybackState;
-
-//@property(nonatomic, retain) UIImageView* cover;
-//@property(nonatomic, retain) UILabel* songTitle;
-//@property(nonatomic, retain) UILabel* songArtist;
 
 +(MediaPlayerClass*)globalMediaPlayerInit;
 

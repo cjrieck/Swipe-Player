@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Swipe Player/SwipePlayerRootViewController.m"
-            timestampString = "416609048.833989"
+            timestampString = "416689077.830375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "@implementation SwipePlayerRootViewController"
-            landmarkType = "3">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-mediaPicker:didPickMediaItems:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

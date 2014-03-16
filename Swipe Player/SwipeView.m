@@ -161,6 +161,13 @@
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
         NSLog(@"In LONG PRESS DOWN");
         [delegate performSongListSegue:self];
+//        MPMediaPickerController* mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+//        mediaPicker.delegate = self;
+//        mediaPicker.allowsPickingMultipleItems = NO;
+//        mediaPicker.prompt = @"Choose Song";
+        
+    
+    
     }
     
 }
