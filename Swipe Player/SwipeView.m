@@ -113,13 +113,17 @@
 }
 
 - (IBAction)doubleTap:(id)sender {
+    NSLog(@"TAP GESTURE");
+    
     MediaPlayerClass* globalMediaPlayer = [MediaPlayerClass globalMediaPlayerInit];
     
     if ([globalMediaPlayer.musicManager playbackState] == MPMusicPlaybackStatePlaying) {
+        NSLog(@"PLAYING AND ABOUT TO STOP");
         [globalMediaPlayer.musicManager pause];
     }
     
     else {
+        NSLog(@"STOPPED AND ABOUT TO PLAY");
         [globalMediaPlayer.musicManager play];
     }
     
@@ -148,6 +152,7 @@
 - (IBAction)longPressDown:(UIGestureRecognizer*)longPressGesture {
     // show view here of list of songs
     
+    // prevents long gesture from being recognized on finger up
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
         NSLog(@"In LONG PRESS DOWN");
         [delegate performSongListSegue:self];
@@ -166,9 +171,9 @@
     NSLog(@"Volume Changed");
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return YES;
+//}
 
 - (void)setCoverArtAndInfo:(MPMediaItem*)current {
     

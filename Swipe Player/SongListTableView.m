@@ -44,6 +44,7 @@
     NSLog(@"VIEW DID LOAD TABLE VIEW");
     
     songCollection = [everything items];
+    sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
     
 //    NSLog(@"%i", [songCollection count]);
     
@@ -67,14 +68,34 @@
 {
 
     // Return the number of sections.
-    return 1;
+    return 27;
+}
+
+- (NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return sections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return index;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return [songCollection count];
+//    NSMutableArray* songTitles = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < [songCollection count]; i++) {
+//        [songTitles addObject:[songCollection[i] title]];
+//    }
+//    
+//    NSArray* sortedArray = [songTitles sortedArrayUsingSelector:
+//                   @selector(localizedCaseInsensitiveCompare:)];
+//
+    
+    NSArray *sectionArray = [songCollection filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]];
+    return [sectionArray count];
+    //    return [sections]
+//    return [songCollection count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -117,6 +138,7 @@
     
     [globalMediaPlayer.musicManager setNowPlayingItem:songCollection[indexPath.row]];
     [globalMediaPlayer.musicManager play];
+//    [globalMediaPlayer.musicManager playbackState] = MPMusicPlaybackStatePlaying;
     
     globalMediaPlayer.currentSong = [globalMediaPlayer.musicManager nowPlayingItem];
     

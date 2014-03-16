@@ -17,6 +17,7 @@
 {
     NSArray* songCollection;
     SwipeView* previousView;
+    NSArray* sections;
 }
 @property(nonatomic, strong) IBOutlet UIBarButtonItem* doneButton;
 
