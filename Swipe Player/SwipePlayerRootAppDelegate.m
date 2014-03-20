@@ -40,6 +40,13 @@
 //        NSLog(@"%@", [activationErr userInfo]);
 //    }
     
+    NSError* error;
+    BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&error];
+    
+    if (!success) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    
     return YES;
 }
 							
