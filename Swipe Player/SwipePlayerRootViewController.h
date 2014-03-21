@@ -17,5 +17,6 @@
 
 @property(nonatomic, strong) IBOutlet SwipeView* viewControllerSubView;
 @property(nonatomic, strong) MPMediaPickerController* mediaPicker;
+@property(nonatomic, strong) AVAudioPlayer* backgroundMusic;
 
 @end

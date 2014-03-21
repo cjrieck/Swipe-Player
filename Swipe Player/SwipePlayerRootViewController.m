@@ -16,6 +16,7 @@
 
 @synthesize viewControllerSubView;
 @synthesize mediaPicker;
+@synthesize backgroundMusic;
 //@synthesize mediaPicker;
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -33,6 +34,8 @@
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = NO;
     mediaPicker.prompt = @"Choose Song";
+    
+//    self.backgroundMusic = [AVAudioPlayer alloc] ini
 }
 
 - (void)didReceiveMemoryWarning
